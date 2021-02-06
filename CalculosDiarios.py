@@ -25,17 +25,37 @@ class Resize:
         self.lab2.pack()
         self.entry = tk.Entry(self.root)
         self.entry.pack()
-        self.root.mainloop()
- 
- 
+        self.root.mainloop() 
 
 
 
 
 def valormedio():
-    valorAlto= max(int(entrada1.get()),int(entrada2.get()),int(entrada3.get()),int(entrada4.get()),int(entrada5.get()),int(entrada6.get()),int(entrada7.get()),int(entrada8.get()),int(entrada9.get()),int(entrada10.get()))
-    valormedio= (int(entrada1.get())+int(entrada2.get())+int(entrada3.get())+int(entrada4.get())+int(entrada5.get())+int(entrada6.get())+int(entrada7.get())+int(entrada8.get())+int(entrada9.get())+int(entrada10.get())) / 10
-    valorBajo= min(int(entrada1.get()),int(entrada2.get()),int(entrada3.get()),int(entrada4.get()),int(entrada5.get())+int(entrada6.get()),int(entrada7.get()),int(entrada8.get()),int(entrada9.get()),int(entrada10.get()))
+    entradas = [entrada1.get(), entrada2.get(), entrada3.get(), entrada4.get(), entrada5.get(), entrada6.get(), entrada7.get(), entrada8.get(), entrada9.get(), entrada10.get()]
+    if entradas[9]=='':
+        entradas.pop(9)   
+    if entradas[8]=='':
+        entradas.pop(8)   
+    if entradas[7]=='':
+        entradas.pop(7)    
+    if entradas[6]=='':
+        entradas.pop(6)   
+    if entradas[5]=='':
+        entradas.pop(5)   
+    if entradas[4]=='':
+        entradas.pop(4)    
+    if entradas[3]=='':
+        entradas.pop(3)    
+    if entradas[2]=='':
+        entradas.pop(2)
+    if entradas[1]=='':
+        entradas.pop(1)
+    if entradas[0]=='':
+        entradas.pop(0)
+    valores = [int(i) for i in entradas]
+    valorAlto= max(valores)
+    valormedio= sum(valores) / len(valores)
+    valorBajo= min(valores)
     return var3.set(valorBajo), var.set(valormedio), var2.set(valorAlto)
 
 def porcentaje():
@@ -69,7 +89,6 @@ var = tk.StringVar()
 var2 = tk.StringVar()
 var3 = tk.StringVar()
 var4 = tk.StringVar()
-
 image = Image.open("nao.jpg")
 image = image.resize((150, 155), Image.ANTIALIAS) ## The (250, 250) is (height, width)
 photo = ImageTk.PhotoImage(image)
@@ -90,41 +109,49 @@ entrada2.place(x=330, y=100)
 e3 = tk.Label(ventana,text='Remesas Dellivery', background="black", fg= "white")
 e3.place(x=447, y=80)
 entrada3 = tk.Entry(ventana)
+entrance3 = str(entrada3)
 entrada3.place(x=440, y=100)
 
 e4 = tk.Label(ventana,text='Tubolivarexpress', background="black", fg= "white")
 e4.place(x=557, y=80)
 entrada4 = tk.Entry(ventana)
+entrance4 = str(entrada4)
 entrada4.place(x=550, y=100)
 
 e5 = tk.Label(ventana,text='Peruvenws', background="black", fg= "white")
 e5.place(x=667, y=80)
 entrada5 = tk.Entry(ventana)
+entrance5 = str(entrada5)
 entrada5.place(x=660, y=100)
 
 e6 = tk.Label(ventana,text='Emperuzolanos', background="black", fg= "white")
 e6.place(x=777, y=80)
 entrada6 = tk.Entry(ventana)
+entrance6 = str(entrada6)
 entrada6.place(x=770, y=100)
 
 e7 = tk.Label(ventana,text='GlobalcambiosWS', background="black", fg= "white")
 e7.place(x=887, y=80)
 entrada7 = tk.Entry(ventana)
+entrance7= str(entrada7)
 entrada7.place(x=880, y=100)
 
 e8 = tk.Label(ventana,text='Danilo', background="black", fg= "white")
 e8.place(x=997, y=80)
 entrada8 = tk.Entry(ventana)
+entrance8 = str(entrada8)
 entrada8.place(x=990, y=100)
 
 e9 = tk.Label(ventana,text='Amiga Keylis', background="black", fg= "white")
 e9.place(x=1107, y=80)
 entrada9 = tk.Entry(ventana)
+entrance9 = str(entrada9)
 entrada9.place(x=1100, y=100)
 
 e10 = tk.Label(ventana,text='AJ', background="black", fg= "white")
 e10.place(x=1217, y=80)
 entrada10 = tk.Entry(ventana)
+entrance10 = str(entrada10)
 entrada10.place(x=1210, y=100)
 
 botoncalculo = tk.Button(ventana, text="calcular", fg="black", command=valormedio)
@@ -169,7 +196,6 @@ R3 = tk.Label(ventana,text='Baja', background="black", fg= "white")
 R3.place(x=860, y=140)
 resultado3 = tk.Label(ventana, bg="plum", textvariable=var3, padx=5, pady=5, width=20)
 resultado3.place(x=800, y=160)
-
 
 ventana.mainloop()
 
